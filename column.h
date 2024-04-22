@@ -1,11 +1,12 @@
-#ifndef PROJET_C_FUNCTIONS_H
-#define PROJET_C_FUNCTIONS_H
+#ifndef PROJET_C_COLUMN_H
+#define PROJET_C_COLUMN_H
 
 #define REALOC_SIZE 256
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
+//Tout type de données
 
 enum enum_type
 {
@@ -31,6 +32,15 @@ struct column {
     ENUM_TYPE column_type;
     COL_TYPE **data; // array of pointers to stored data
     unsigned long long int *index; // array of integers
+// index valid
+// 0 : no index
+// -1 : invalid index
+// 1 : valid index
+    int valid_index;
+// direction de tri Ascendant ou Déscendant
+// 0 : ASC
+// 1 : DESC
+    int sort_dir;
 };
 typedef struct column COLUMN;
 
@@ -40,4 +50,4 @@ void delete_column(COLUMN **col);
 void convert_value(COLUMN *col, unsigned long long int i, char *str, int size);
 void print_col(COLUMN* col);
 
-#endif //PROJET_C_FUNCTIONS_H
+#endif

@@ -55,8 +55,26 @@ build CMakeFiles/Projet_C.dir/main.c.obj: C_COMPILER__Projet_C_unscanned_Debug C
   OBJECT_DIR = CMakeFiles\Projet_C.dir
   OBJECT_FILE_DIR = CMakeFiles\Projet_C.dir
 
-build CMakeFiles/Projet_C.dir/Functions.c.obj: C_COMPILER__Projet_C_unscanned_Debug C$:/Users/Gérémy/CLionProjects/Projet_C/Functions.c || cmake_object_order_depends_target_Projet_C
-  DEP_FILE = CMakeFiles\Projet_C.dir\Functions.c.obj.d
+build CMakeFiles/Projet_C.dir/column.c.obj: C_COMPILER__Projet_C_unscanned_Debug C$:/Users/Gérémy/CLionProjects/Projet_C/column.c || cmake_object_order_depends_target_Projet_C
+  DEP_FILE = CMakeFiles\Projet_C.dir\column.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projet_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projet_C.dir
+
+build CMakeFiles/Projet_C.dir/list.c.obj: C_COMPILER__Projet_C_unscanned_Debug C$:/Users/Gérémy/CLionProjects/Projet_C/list.c || cmake_object_order_depends_target_Projet_C
+  DEP_FILE = CMakeFiles\Projet_C.dir\list.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projet_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projet_C.dir
+
+build CMakeFiles/Projet_C.dir/sort.c.obj: C_COMPILER__Projet_C_unscanned_Debug C$:/Users/Gérémy/CLionProjects/Projet_C/sort.c || cmake_object_order_depends_target_Projet_C
+  DEP_FILE = CMakeFiles\Projet_C.dir\sort.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Projet_C.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projet_C.dir
+
+build CMakeFiles/Projet_C.dir/cdataframe.c.obj: C_COMPILER__Projet_C_unscanned_Debug C$:/Users/Gérémy/CLionProjects/Projet_C/cdataframe.c || cmake_object_order_depends_target_Projet_C
+  DEP_FILE = CMakeFiles\Projet_C.dir\cdataframe.c.obj.d
   FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Projet_C.dir
   OBJECT_FILE_DIR = CMakeFiles\Projet_C.dir
@@ -69,7 +87,7 @@ build CMakeFiles/Projet_C.dir/Functions.c.obj: C_COMPILER__Projet_C_unscanned_De
 #############################################
 # Link the executable Projet_C.exe
 
-build Projet_C.exe: C_EXECUTABLE_LINKER__Projet_C_Debug CMakeFiles/Projet_C.dir/main.c.obj CMakeFiles/Projet_C.dir/Functions.c.obj
+build Projet_C.exe: C_EXECUTABLE_LINKER__Projet_C_Debug CMakeFiles/Projet_C.dir/main.c.obj CMakeFiles/Projet_C.dir/column.c.obj CMakeFiles/Projet_C.dir/list.c.obj CMakeFiles/Projet_C.dir/sort.c.obj CMakeFiles/Projet_C.dir/cdataframe.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Projet_C.dir

@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "Functions.h"
+#include "column.h"
 
 int main() {
-    COLUMN *mycol = create_column(CHAR, "Column 1");
-    char a = 'A', c = 'C';
+    COLUMN *mycol = create_column(INT, "Column 1");
+    int a = 26, c = 32;
     insert_value(mycol, &a);
     insert_value(mycol, &c);
     print_col(mycol);
