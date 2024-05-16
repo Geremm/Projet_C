@@ -18,6 +18,7 @@ list *lst_create_list() {
 void lst_delete_list(list * lst) {
     lst_erase(lst);
     free(lst);
+    lst = NULL;
 }
 void lst_insert_head(list * lst, lnode * pnew) {
     if (lst->head == NULL) {

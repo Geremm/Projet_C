@@ -1,8 +1,10 @@
 #ifndef PROJET_C_LIST_H
 #define PROJET_C_LIST_H
 
+#include "column.h"
+
 typedef struct lnode_ {
-    void *data;
+    COLUMN* data;
     struct lnode_ *prev;
     struct lnode_ *next;
 } lnode;

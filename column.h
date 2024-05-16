@@ -49,5 +49,11 @@ int insert_value(COLUMN* col, void *value);
 void delete_column(COLUMN **col);
 void convert_value(COLUMN *col, unsigned long long int i, char *str, int size);
 void print_col(COLUMN* col);
+void print_col_intervalle(COLUMN* col, int debut, int fin);
 
+int nb_occurence(COLUMN *col, void *x);
+int valeur(COLUMN *col, unsigned long long int i);
+int nb_valeur_sup(COLUMN *col, void *x);
+int nb_valeur_min(COLUMN *col, void *x);
+int nb_valeur_egale(COLUMN *col, void *x);
 #endif
