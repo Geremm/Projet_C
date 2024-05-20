@@ -16,7 +16,7 @@ typedef struct list_ {
 
 typedef list CDATAFRAME;
 
-lnode *lst_create_lnode(void *dat);
+lnode *lst_create_lnode(COLUMN *dat);
 
 list *lst_create_list();
 
