@@ -31,7 +31,7 @@ int insert_value(COLUMN* col, void *value){
         col->max_size += REALOC_SIZE/sizeof(void*);
     }
 
-    else if ((col->max_size) == col->size){                 //Todo Note si ça beug penser -1
+    else if ((col->max_size) == col->size){
         col->data = realloc(col->data, (col->max_size)*sizeof(void*) + (sizeof(void*)*REALOC_SIZE/sizeof(void*)));
         if (col->data == NULL)
             return 0;
@@ -83,10 +83,11 @@ int insert_value(COLUMN* col, void *value){
 }
 
 void delete_column(COLUMN **col){
+    free((*col)->title);
+    (*col)->title = NULL;
+
     for (int i = 0; i < (*col)->size; i++) {
         del_cell(&(*col)->data[i]);
-//        free(((*col)->data)[i]);
-//        ((*col)->data)[i] = NULL;
     }
     free(*col);
     *col = NULL;
@@ -121,7 +122,6 @@ void convert_value(COLUMN *col, unsigned long long int i, char *str, int size){
             strcpy(str, (char*) col->data[i]->string_value);
             break;
         case STRUCTURE:
-            //TODO Faire pour les structures au fur et a mesure du projet.
             break;
         case NULLVAL:
             snprintf(str, size, "%s", *((char **) col->data[i]));
@@ -133,7 +133,7 @@ void convert_value(COLUMN *col, unsigned long long int i, char *str, int size){
 
 void print_col(COLUMN* col){
     for (int i=0; i<(col->size); i++){
-        char str[100]; //Todo faire dybamequement pour pouvoir avoir toute les tailles de variables
+        char str[100];
         convert_value(col, i, str, sizeof(str));
             printf("[%d] %s\n", i, str);
 
@@ -218,15 +218,10 @@ void fill_column(COLUMN *col, int num_col, unsigned int nb_val){
                 break;
             case STRING:
                 ptr_val = (char *) malloc(sizeof(int));
-                scanf(" %s", (char*)ptr_val); //Todo le scanf pour les chaines avec des espaces pour éviter les bugs
+                scanf(" %s", (char*)ptr_val);
                 insert_value(col, ptr_val);
                 break;
-            case STRUCTURE:
-                //Todo cas structure.
-                break;
-            case NULLVAL:
-                //Todo cas NULL
-                break;
+
         }
 
     }

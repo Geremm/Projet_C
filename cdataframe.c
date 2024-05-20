@@ -24,7 +24,7 @@ CDATAFRAME *create_void_cdataframe(int size){
     return lst;
 }
 
-void fill_cdataframe(CDATAFRAME *cdf){ //Todo faire des saisies sécurisées
+void fill_cdataframe(CDATAFRAME *cdf){
     int nb_col = get_cdataframe_cols_size(cdf), nb_val;
     void *ptr_val = NULL;
     lnode *noeud_actuel = cdf->head;
@@ -64,7 +64,14 @@ void fill_cdataframe_saisie_endur(CDATAFRAME *cdf){
 
 
 void delete_cdataframe(CDATAFRAME **cdf){
+    int nb_col = get_cdataframe_cols_size(*cdf);
+    lnode *noeud = (*cdf)->head;
+    for(int i=0; i<nb_col; i++){
+        delete_column(&noeud->data);
+        noeud = noeud->next;
+    }
     lst_delete_list(*cdf);
+    *cdf = NULL;
 }
 
 
@@ -154,12 +161,6 @@ void ajout_ligne(CDATAFRAME *cdf){
                 ptr_val = (char *) malloc(sizeof(int));
                 scanf(" %s", (char*)ptr_val);
                 insert_value(noeud_actuel->data, ptr_val);
-                break;
-            case STRUCTURE:
-                //Todo cas structure.
-                break;
-            case NULLVAL:
-                //Todo cas NULL
                 break;
         }
         noeud_actuel = noeud_actuel->next;
@@ -343,13 +344,6 @@ void remplacer_val(CDATAFRAME *cdf, int i, int j){
             printf("Entrez un chaine de caractere a inserer dans la colonne %s, en [%d] [%d] : ", noeud->data->title, i, j);
             scanf(" %s", str);
             strcpy((char*) noeud->data->data[j]->string_value, str);
-            //Todo le scanf pour les chaines avec des espaces pour éviter les bugs
-            break;
-        case STRUCTURE:
-            //Todo cas structure.
-            break;
-        case NULLVAL:
-            //Todo cas NULL
             break;
     }
 }

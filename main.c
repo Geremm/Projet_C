@@ -4,13 +4,12 @@
 #include "cdataframe.h"
 
 int main() {
-//ENUM_TYPE cdftype [] = {INT,STRING, DOUBLE};
-    //CDATAFRAME *cdf = create_cdataframe(cdftype, 3);
     int end = 0;
     int rep, nb_col, valide, debut, fin;
     char str[50], titre[50];
     void * ptr_val= NULL;
     ENUM_TYPE col_type;
+    CDATAFRAME *cdf = create_void_cdataframe(1);
 
     while (end == 0){
         printf("Si vous voulez creer un Dataframe taper 1 sinon taper 0 : \n");
@@ -237,5 +236,6 @@ int main() {
         else
             end = 1;
     }
+    delete_cdataframe(&cdf);
     return 0;
 }
