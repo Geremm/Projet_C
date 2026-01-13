@@ -9,7 +9,12 @@ int main() {
     char str[50], titre[50];
     void * ptr_val= NULL;
     ENUM_TYPE col_type;
+    ENUM_TYPE Tabcol_type[] = { INT, STRING, DOUBLE};
     CDATAFRAME *cdf = create_void_cdataframe(1);
+    cdf = create_cdataframe(Tabcol_type, 3);
+    fill_cdataframe_saisie_endur(cdf);
+    print_cdataframe(cdf);
+    write_int_matrix_csv("Test1.csv", cdf);
 
     while (end == 0){
         printf("Si vous voulez creer un Dataframe taper 1 sinon taper 0 : \n");
@@ -226,6 +231,8 @@ int main() {
                             scanf(" %d %d", &debut, &fin);
                             print_cdataframe_ligne(cdf, debut, fin);
                             break;
+                        case 3:
+                            afficher_nom_colonnes(cdf);
                     }
                 }
                 else

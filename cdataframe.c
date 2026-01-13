@@ -375,3 +375,71 @@ int nb_occurence_cdf(CDATAFRAME *cdf, void *x, ENUM_TYPE type){
     }
     return cpt;
 }
+
+void write_cell(ENUM_TYPE t, FILE* f, COL_TYPE *pval){
+    char buf[64];
+    switch (t) {
+        case NULLVAL:
+            break;
+
+        case UINT:
+            snprintf(buf, sizeof buf, "%u", pval->uint_value);
+            fputs(buf, f);
+            break;
+
+        case INT:
+            snprintf(buf, sizeof buf, "%d", pval->int_value);
+            fputs(buf, f);
+            break;
+
+        case CHAR:
+            fputc(pval->char_value, f);
+            break;
+
+        case FLOAT:
+            float x = *(const float*)pval;
+            snprintf(buf, sizeof buf, "%.9g", pval->float_value);
+            fputs(buf, f);
+            break;
+
+        case DOUBLE:
+            snprintf(buf, sizeof buf, "%.17g", pval->double_value);
+            fputs(buf, f);
+            break;
+
+        case STRING:
+            fputs(pval->string_value ? pval->string_value : "", f);
+            break;
+    }
+}
+
+
+
+int write_int_matrix_csv(const char *path, CDATAFRAME *cdf){
+    FILE *f = fopen(path, "w");
+    if (!f || cdf->head==NULL) return -1;
+    if(cdf->head==cdf->tail) {
+        fputs(cdf->head->data->title,f);
+        fputc('\n', f);
+        for(int i=0; i<cdf->head->data->size; i++){
+            write_cell(cdf->head->data->column_type, f, cdf->head->data->data[i]);
+            fputc('\n', f);
+        }
+        return 0;
+    }
+    for (int i=-1;i<(int)cdf->head->data->size;i++) {
+        lnode *ptr = cdf->head;
+        while (ptr != NULL) {
+            if (i == -1)
+                fputs(ptr->data->title, f);
+            else
+                write_cell(ptr->data->column_type, f, ptr->data->data[i]);
+            if (ptr->next!=NULL)
+                fputc(',', f);
+            ptr = ptr->next;
+        }
+        fputc('\n', f);
+    }
+    fclose(f);
+    return 0;
+}
